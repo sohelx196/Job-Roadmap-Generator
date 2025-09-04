@@ -1,5 +1,3 @@
-
-
 const searchInput = document.getElementById("searchInput");
 const suggestionsBox = document.getElementById("suggestions");
 const roadmapDiv = document.getElementById("roadmap");
@@ -17,8 +15,9 @@ searchInput.addEventListener("input", () => {
       matches.forEach(match => {
         let div = document.createElement("div");
         div.textContent = match;
+
         let span = document.createElement("span");
-        span.textContent = `(${roadmaps[match].category})`;
+        span.textContent = ` (${roadmaps[match].category})`;
         span.classList.add("category");
         div.appendChild(span);
 
@@ -42,24 +41,40 @@ searchInput.addEventListener("input", () => {
 
 function showRoadmap(role) {
   roadmapDiv.innerHTML = "";
-  let data = roadmaps[role.toLowerCase()];
-  if (!data) {
-    roadmapDiv.innerHTML = `<p>Roadmap not available for "${role}"</p>`;
+
+  if (!role) {
+    roadmapDiv.style.display = "none"; // hide if empty
     return;
   }
 
+  let key = role.trim().toLowerCase(); // normalize input
+  let data = roadmaps[key];
+
+  if (!data) {
+    roadmapDiv.style.display = "block";
+    roadmapDiv.innerHTML = `<p style="color:red;">Roadmap not available for "<b>${role}</b>"</p>`;
+    return;
+  }
+
+  roadmapDiv.style.display = "block";
+
+  // Title
   let title = document.createElement("h2");
   title.textContent = `${role.charAt(0).toUpperCase() + role.slice(1)} Roadmap`;
   roadmapDiv.appendChild(title);
 
+  // Timeline container
   let timeline = document.createElement("div");
   timeline.classList.add("timeline");
 
+  // Steps
   data.steps.forEach(step => {
     let div = document.createElement("div");
     div.classList.add("step");
+
     let p = document.createElement("p");
     p.textContent = step;
+
     div.appendChild(p);
     timeline.appendChild(div);
   });
