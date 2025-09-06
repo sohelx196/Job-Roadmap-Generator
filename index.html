@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
   <meta charset="UTF-8">
   <title>Skill Roadmap Generator</title>
-  <link rel="stylesheet" href="index.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <style>
+    body { font-family: sans-serif; background: #f4f4f4; padding: 20px; }
+    .container { max-width: 700px; margin: auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    select, button, input { width: 100%; padding: 10px; margin-top: 10px; border-radius: 5px; border: 1px solid #b63a3a; }
+    button { background-color: #36313b; color: white; font-weight: bold; cursor: pointer; }
+    #roadmap-output { margin-top: 20px; background: #f9f9f9; padding: 15px; border-radius: 5px; }
+    .phase-block { margin-bottom: 15px; }
+    .career-list { background: #eef; padding: 10px; border-radius: 5px; margin-bottom: 10px; }
 
-/* Responsive: Adjust tagline text size on mobile */
-@media (max-width: 768px) {
+
+    @media (max-width: 768px) {
   .main-content {
     flex-direction: column;   /* Stack tagline and form vertically */
     padding: 20px;
@@ -29,27 +34,15 @@
   }
 }
 
-
-
-
-
-    body {
-      font-family: 'Poppins', sans-serif;
-
-      margin: 0;
-  
-    }
-
-    /* Page Title */
-    h1 {
+  h1 {
       font-size: 2.5em;
       color: #0f4c81;
       text-align: center;
       margin-bottom: 30px;
     }
 
-    /* Flex Layout for Form + Tagline */
-    .main-content {
+
+        .main-content {
       display: flex;
       justify-content: space-between;
       align-items: flex-center;
@@ -58,65 +51,9 @@
       margin: auto;
     }
 
-    /* Form Container */
-    .container {
-      flex: 1;
-      max-width: 600px;
-      background: #fff;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-    }
 
-    .container h2 {
-      font-size: 1.3em;
-      margin-bottom: 15px;
-      color: #0f4c81;
-      text-align: center;
-    }
-
-    label {
-      display: block;
-      font-weight: 600;
-      margin-top: 15px;
-      margin-bottom: 5px;
-      text-align: left;
-    }
-
-    select, button {
-      width: 100%;
-      padding: 10px;
-      font-size: 1em;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      margin-bottom: 15px;
-    }
-
-    /* Output Box */
-    #roadmap-output {
-      margin-top: 20px;
-      background: #f9f9f9;
-      padding: 15px;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-    }
-
-    #roadmap-output h2 {
-      color: #0f4c81;
-    }
-
-    #roadmap-output ul {
-      text-align: left;
-      margin-top: 10px;
-    }
-
-    #roadmap-output li {
-      margin: 6px 0;
-    }
-
-    /* Tagline Section */
-    .tagline {
-      flex:0.7;
+     .tagline {
+      flex:0.5;
       font-size: 1.1em;
       color: #333;
       text-align: center;
@@ -130,34 +67,56 @@
       color: #0f4c81;
     }
     
+    .container{
+       flex: 1;
+      max-width: 600px;
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    }
+
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #555;
+    }
+
+  
   </style>
 </head>
 <body>
 
-  <!-- Project Title -->
-  <h1>Skill Roadmap Generator</h1>
+    <h1> Skill Roadmap Generator</h1>
 
-  <!-- Form + Tagline Side by Side -->
-  <div class="main-content">
-    
-    <!-- Tagline on Left -->
-    <div class="tagline">
+
+
+
+
+      <div class="main-content">
+
+            <div class="tagline">
       <h2><strong>Learn Today, Lead Tomorrow (Future Ready Skills)</strong></h2>
       <p>Equipping youth with AI, robotics, coding, and digital literacy—building the skill set needed for the jobs and challenges of the future.</p>
     </div>
 
-    <!-- Form on Right -->
-    <div class="container">
-      <h2>🔍 अपना स्किल रोडमैप चुनें</h2>
 
-      <label for="interest">इंटरेस्ट:</label>
-      <select id="interest" onchange="populateJobRoles()">
-        <option value="">--चुनें--</option>
-        <option value="software">💻 Software</option>
-        <option value="hardware">🔧 Hardware</option>
-      </select>
 
-      <label for="nsqfLevel">NSQF लेवल:</label>
+
+<div class="container">
+    <input type="text" id="voiceQuery" placeholder="बोलिए (speak subject name to know roadmap)" disabled/>
+    <button onclick="startVoice()">🎙 बोलें</button>
+
+    <label>इंटरेस्ट:</label>
+    <select id="interest" onchange="populateJobRoles()">
+      <option value="">--चुनें--</option>
+      <option value="software">💻 Software</option>
+      <option value="hardware">🔧 Hardware</option>
+    </select>
+
+    <label>NSQF लेवल:</label>
       <select id="nsqfLevel" onchange="populateJobRoles()">
         <option value="">--चुनें--</option>
         <option value="1">Level 1</option>
@@ -172,20 +131,19 @@
         <option value="10">Level 10</option>
       </select>
 
-      <label for="jobRole">जॉब रोल:</label>
-      <select id="jobRole">
-        <option value="">--पहले ऊपर दो विकल्प चुनें--</option>
-      </select>
+    <label>जॉब रोल:</label>
+    <select id="jobRole">
+      <option value="">--पहले ऊपर दो विकल्प चुनें--</option>
+    </select>
 
-      <button onclick="renderRoadmap()">Check Roadmap</button>
-
-      <div id="roadmap-output"></div>
-    </div>
+    <button onclick="renderRoadmap()">📋 रोडमैप दिखाएं</button>
+    <div id="roadmap-output"></div>
   </div>
 
 
-  <!-- Full Forms -->
-  <div class="info" style="text-align: center;">
+      </div>
+
+        <div class="info" style="text-align: center;">
     <div>
 
       <p><strong>NSQF:</strong> National Skills Qualifications Framework</p>
@@ -195,71 +153,472 @@
     </div>
   </div>
 
+
+
   <script>
-    const roadmapData = {
-      software: {
-        1: { "Data Entry Operator": ["हिंदी/अंग्रेज़ी", "MS Word", "Excel", "PowerPoint", "Internet", "UPI"] },
-        2: { "CCC Operator": ["Digital Literacy", "Email", "Typing", "Cyber Hygiene"] },
-        3: { "Office Assistant": ["Word", "Excel", "Call Handling", "CRM Basics"] },
-        4: { "Web Dev Associate": ["HTML", "CSS", "JS", "Git"] },
-        5: { "Frontend Developer": ["React", "Responsive Design", "Hosting"] },
-        6: { "Full Stack Dev": ["MERN Stack", "API Integration", "Billing Logic"] },
-        7: { "SaaS Architect": ["Plugin Loader", "Modular UI", "Founder Governance"] },
-        8: { "AI Product Lead": ["Model Tuning", "Deployment", "Ethics"] },
-        9: { "Tech Consultant": ["Export Strategy", "Policy Mapping"] },
-        10: { "Skill Strategist": ["NSQF Framework", "System Design"] }
-      },
-      hardware: {
-        1: { "Ground Technician": ["Tool Handling", "Safety", "Cleaning"] },
-        2: { "Cable Installer": ["Wiring", "Crimping", "Testing"] },
-        3: { "IoT Assistant": ["Arduino", "Sensors", "Soldering"] },
-        4: { "Embedded Operator": ["ESP32", "Raspberry Pi", "LAN Setup"] },
-        5: { "Smart Device Installer": ["Voice Interface", "Modular Wiring"] },
-        6: { "Hardware Integrator": ["IoT + Cloud", "Diagnostics"] },
-        7: { "Product Designer": ["PCB Design", "Firmware Logic"] },
-        8: { "Hardware Architect": ["Tier Planning", "BOM Optimization"] },
-        9: { "Hardware Consultant": ["Export Prototyping", "Compliance"] },
-        10: { "Hardware Planner": ["Deployment Strategy", "Sector Mapping"] }
-      }
-    };
+/* ========== SUBJECT TO CAREER MAPPING ========== */
+const subjectCareers = {
+  math: [
+    "Data Scientist",
+    "Actuary",
+    "Quant Analyst",
+    "Engineer",
+    "Statistician",
+    "Mathematician",
+    "Operations Research Analyst",
+    "Economist",
+    "Financial Analyst",
+    "Cryptographer",
+    "AI/ML Engineer"
+  ],
+  physics: [
+    "Aerospace Engineer",
+    "Physicist",
+    "Lab Technician",
+    "Researcher",
+    "Mechanical Engineer",
+    "Civil Engineer",
+    "Nuclear Scientist",
+    "Astrophysicist",
+    "Robotics Engineer",
+    "Geophysicist",
+    "Material Scientist"
+  ],
+  biology: [
+    "Doctor",
+    "Biotechnologist",
+    "Pharmacist",
+    "Research Scientist",
+    "Microbiologist",
+    "Genetic Engineer",
+    "Zoologist",
+    "Botanist",
+    "Forensic Scientist",
+    "Healthcare Administrator",
+    "Nutritionist",
+    "Environmental Biologist"
+  ],
+  computer: [
+    "Software Developer",
+    "AI Engineer",
+    "Cybersecurity Analyst",
+    "IT Support",
+    "Web Developer",
+    "Full Stack Developer",
+    "Data Engineer",
+    "Cloud Architect",
+    "Game Developer",
+    "UI/UX Designer",
+    "Blockchain Developer",
+    "DevOps Engineer"
+  ],
+  chemistry: [
+    "Chemist",
+    "Pharmacologist",
+    "Food Scientist",
+    "Petrochemical Engineer",
+    "Forensic Chemist",
+    "Toxicologist",
+    "Material Chemist",
+    "Analytical Chemist",
+    "Industrial Chemist",
+    "Environmental Scientist"
+  ],
+  commerce: [
+    "Chartered Accountant",
+    "Company Secretary",
+    "Investment Banker",
+    "Financial Planner",
+    "Auditor",
+    "Business Analyst",
+    "Stock Broker",
+    "Economist",
+    "Entrepreneur",
+    "Tax Consultant"
+  ],
+  arts: [
+    "Teacher",
+    "Journalist",
+    "Writer",
+    "Lawyer",
+    "Civil Services Officer",
+    "Historian",
+    "Psychologist",
+    "Sociologist",
+    "Public Relations Officer",
+    "Politician",
+    "Social Worker"
+  ],
+  geography: [
+    "Cartographer",
+    "Urban Planner",
+    "Climatologist",
+    "Geologist",
+    "Environmental Consultant",
+    "Travel & Tourism Expert",
+    "Disaster Management Specialist",
+    "Remote Sensing Specialist",
+    "Oceanographer",
+    "Archaeologist"
+  ]
+};
 
-    function populateJobRoles() {
-      const interest = document.getElementById("interest").value;
-      const level = document.getElementById("nsqfLevel").value;
-      const jobRoleSelect = document.getElementById("jobRole");
-      jobRoleSelect.innerHTML = "<option value=''>--जॉब रोल चुनें--</option>";
 
-      if (interest && level && roadmapData[interest][level]) {
-        const roles = Object.keys(roadmapData[interest][level]);
-        roles.forEach(role => {
-          const option = document.createElement("option");
-          option.value = role;
-          option.textContent = role;
-          jobRoleSelect.appendChild(option);
-        });
-      }
-    }
 
-    function renderRoadmap() {
-      const interest = document.getElementById("interest").value;
-      const level = document.getElementById("nsqfLevel").value;
-      const jobRole = document.getElementById("jobRole").value;
-      const output = document.getElementById("roadmap-output");
+   function searchBySkill() {
+      let skill = document.getElementById("skillInput").value.trim().toLowerCase();
+      let output = document.getElementById("careerResult");
 
-      if (interest && level && jobRole && roadmapData[interest][level][jobRole]) {
-        const skills = roadmapData[interest][level][jobRole];
-        output.innerHTML = `
-          <h2>📌 ${jobRole} (NSQF Level ${level})</h2>
-          <p style="background-color:yellowgreen;display:inline-block;padding:5px 10px;border-radius:5px;">
-            ⏳ अनुमानित अवधि: ${level <= 3 ? "2–6 महीने" : level <= 6 ? "6–12 महीने" : "1+ साल"}
-          </p>
-          <h3>🧰 स्किल सेट (Skill Set) :</h3>
-          <ul>${skills.map(skill => `<li class="skill-list">${skill}</li>`).join("")}</ul>
-        `;
+      if (skillCareers[skill]) {
+        output.innerHTML = `<h3>✅ Careers for <u>${skill}</u>:</h3>` +
+          `<div class="career-list">` + 
+          skillCareers[skill].map(c => `<div>🔹 ${c}</div>`).join("") + 
+          `</div>`;
       } else {
-        output.innerHTML = "<p>⚠ कृपया सभी विकल्प सही तरीके से चुनें।</p>";
+        output.innerHTML = `<p>⚠ No careers found for "${skill}". Try another skill.</p>`;
       }
     }
+
+/* ========== ROADMAP DATA (same as your original) ========== */
+const roadmapData = {
+  software: {
+    1: {
+      "Data Entry Operator": {
+        duration: "3 महीने",
+        salary: { min: 8000, max: 15000 },
+        degree: { recommended: "12th पास", timing: "साथ", note: "बेसिक कंप्यूटर नॉलेज जरूरी" },
+        phases: [
+          { title: "MS Office", days: 30, skills: ["Word", "Excel", "PowerPoint"] },
+          { title: "Digital Skills", days: 30, skills: ["Internet", "UPI", "Email"] }
+        ]
+      }
+    },
+    2: {
+      "CCC Operator": {
+        duration: "3 महीने",
+        salary: { min: 10000, max: 18000 },
+        degree: { recommended: "CCC Certificate", timing: "साथ", note: "डिजिटल लिटरेसी कोर्स" },
+        phases: [
+          { title: "Digital Basics", days: 20, skills: ["Typing", "Email", "Cyber Hygiene"] },
+          { title: "Office Tools", days: 40, skills: ["MS Word", "Excel"] }
+        ]
+      }
+    },
+    3: {
+      "Office Assistant": {
+        duration: "6 महीने",
+        salary: { min: 15000, max: 25000 },
+        degree: { recommended: "Diploma", timing: "साथ", note: "CRM और कम्युनिकेशन स्किल्स जरूरी" },
+        phases: [
+          { title: "Office Software", days: 30, skills: ["Word", "Excel"] },
+          { title: "Communication", days: 30, skills: ["Call Handling", "CRM Basics"] }
+        ]
+      }
+    },
+    4: {
+      "Web Dev Associate": {
+        duration: "6 महीने",
+        salary: { min: 20000, max: 35000 },
+        degree: { recommended: "Diploma IT", timing: "बाद में", note: "HTML, CSS, JS से शुरुआत करें" },
+        phases: [
+          { title: "Frontend Basics", days: 30, skills: ["HTML", "CSS"] },
+          { title: "JavaScript", days: 30, skills: ["DOM", "Git"] }
+        ]
+      }
+    },
+    5: {
+      "Frontend Developer": {
+        duration: "6 महीने",
+        salary: { min: 25000, max: 40000 },
+        degree: { recommended: "Diploma, BCA", timing: "साथ या बाद में", note: "HTML, CSS, JS से शुरुआत करें" },
+        phases: [
+          { title: "HTML & CSS", days: 30, skills: ["Structure", "Styling"] },
+          { title: "JavaScript Basics", days: 30, skills: ["Variables", "DOM"] }
+        ]
+      }
+    },
+    6: {
+      "Full Stack Developer": {
+        duration: "9 महीने",
+        salary: { min: 40000, max: 70000 },
+        degree: { recommended: "B.Tech, MCA", timing: "बाद में", note: "MERN stack पर फोकस करें" },
+        phases: [
+          { title: "React", days: 30, skills: ["Components", "Hooks"] },
+          { title: "Node.js", days: 30, skills: ["API", "MongoDB"] }
+        ]
+      }
+    },
+    7: {
+      "SaaS Architect": {
+        duration: "12 महीने",
+        salary: { min: 60000, max: 90000 },
+        degree: { recommended: "M.Tech, MBA Tech", timing: "बाद में", note: "आर्किटेक्चर लेवल स्किल्स" },
+        phases: [
+          { title: "System Design", days: 45, skills: ["Plugin Loader", "UI Modules"] },
+          { title: "Governance", days: 45, skills: ["Founder Governance", "Scaling"] }
+        ]
+      }
+    },
+    8: {
+      "AI Product Lead": {
+        duration: "15 महीने",
+        salary: { min: 70000, max: 120000 },
+        degree: { recommended: "PhD / M.Tech AI", timing: "बाद में", note: "AI Ethics & Deployment" },
+        phases: [
+          { title: "Model Training", days: 60, skills: ["Model Tuning", "Deployment"] },
+          { title: "AI Ethics", days: 60, skills: ["Bias Handling", "Governance"] }
+        ]
+      }
+    },
+    9: {
+      "Tech Consultant": {
+        duration: "18 महीने",
+        salary: { min: 80000, max: 150000 },
+        degree: { recommended: "MBA Tech", timing: "बाद में", note: "Strategy & Policy" },
+        phases: [
+          { title: "Market Research", days: 60, skills: ["Export Strategy", "Global Mapping"] },
+          { title: "Policy", days: 60, skills: ["Policy Mapping", "Compliance"] }
+        ]
+      }
+    },
+    10: {
+      "Skill Strategist": {
+        duration: "24 महीने",
+        salary: { min: 100000, max: 200000 },
+        degree: { recommended: "MBA, M.Tech", timing: "बाद में", note: "National Framework Specialist" },
+        phases: [
+          { title: "Framework", days: 90, skills: ["NSQF Framework", "System Design"] },
+          { title: "Strategy", days: 90, skills: ["Policy Design", "Skill Mapping"] }
+        ]
+      }
+    }
+  },
+
+  hardware: {
+    1: {
+      "Ground Technician": {
+        duration: "3 महीने",
+        salary: { min: 8000, max: 15000 },
+        degree: { recommended: "ITI", timing: "साथ", note: "सिर्फ बेसिक टेक्निकल स्किल्स" },
+        phases: [
+          { title: "Tools", days: 30, skills: ["Tool Handling", "Safety"] },
+          { title: "Maintenance", days: 30, skills: ["Cleaning", "Inspection"] }
+        ]
+      }
+    },
+    2: {
+      "Cable Installer": {
+        duration: "4 महीने",
+        salary: { min: 12000, max: 20000 },
+        degree: { recommended: "ITI Electrical", timing: "साथ", note: "Wiring बेसिक्स" },
+        phases: [
+          { title: "Wiring", days: 30, skills: ["Crimping", "Testing"] },
+          { title: "Safety", days: 30, skills: ["Load Management", "Inspection"] }
+        ]
+      }
+    },
+    3: {
+      "IoT Assistant": {
+        duration: "6 महीने",
+        salary: { min: 20000, max: 35000 },
+        degree: { recommended: "Diploma IoT", timing: "बाद में", note: "Arduino और Sensors बेसिक्स" },
+        phases: [
+          { title: "Arduino", days: 30, skills: ["Pins", "Basic Code"] },
+          { title: "Sensors", days: 30, skills: ["Temperature", "Motion"] }
+        ]
+      }
+    },
+    4: {
+      "Embedded Operator": {
+        duration: "9 महीने",
+        salary: { min: 30000, max: 45000 },
+        degree: { recommended: "B.Tech ECE", timing: "बाद में", note: "Embedded Hardware Setup" },
+        phases: [
+          { title: "ESP32", days: 30, skills: ["WiFi", "Bluetooth"] },
+          { title: "Raspberry Pi", days: 30, skills: ["Linux Setup", "LAN Setup"] }
+        ]
+      }
+    },
+    5: {
+      "Smart Device Installer": {
+        duration: "9 महीने",
+        salary: { min: 35000, max: 50000 },
+        degree: { recommended: "Diploma IoT", timing: "साथ", note: "Home Automation Skills" },
+        phases: [
+          { title: "Voice Control", days: 30, skills: ["Alexa", "Google Home"] },
+          { title: "Wiring", days: 30, skills: ["Modular Wiring", "Switch Boards"] }
+        ]
+      }
+    },
+    6: {
+      "Hardware Integrator": {
+        duration: "12 महीने",
+        salary: { min: 40000, max: 60000 },
+        degree: { recommended: "B.Tech ECE", timing: "बाद में", note: "IoT + Cloud Knowledge" },
+        phases: [
+          { title: "IoT", days: 30, skills: ["Arduino", "ESP32"] },
+          { title: "Cloud", days: 30, skills: ["AWS IoT", "Diagnostics"] }
+        ]
+      }
+    },
+    7: {
+      "Product Designer": {
+        duration: "15 महीने",
+        salary: { min: 50000, max: 80000 },
+        degree: { recommended: "B.Tech ECE/EE", timing: "बाद में", note: "PCB और Firmware" },
+        phases: [
+          { title: "PCB Design", days: 45, skills: ["KiCad", "Proteus"] },
+          { title: "Firmware", days: 45, skills: ["Embedded C", "Logic"] }
+        ]
+      }
+    },
+    8: {
+      "Hardware Architect": {
+        duration: "18 महीने",
+        salary: { min: 60000, max: 90000 },
+        degree: { recommended: "M.Tech Hardware", timing: "बाद में", note: "System Design" },
+        phases: [
+          { title: "Architecture", days: 60, skills: ["Tier Planning", "System Modules"] },
+          { title: "Optimization", days: 60, skills: ["BOM", "Performance"] }
+        ]
+      }
+    },
+    9: {
+      "Hardware Consultant": {
+        duration: "20 महीने",
+        salary: { min: 70000, max: 120000 },
+        degree: { recommended: "MBA Tech", timing: "बाद में", note: "Export & Compliance" },
+        phases: [
+          { title: "Export", days: 60, skills: ["Export Prototyping", "Market Research"] },
+          { title: "Compliance", days: 60, skills: ["Standards", "Certifications"] }
+        ]
+      }
+    },
+    10: {
+      "Hardware Planner": {
+        duration: "24 महीने",
+        salary: { min: 80000, max: 150000 },
+        degree: { recommended: "MBA, M.Tech", timing: "बाद में", note: "Deployment Strategies" },
+        phases: [
+          { title: "Strategy", days: 90, skills: ["Deployment", "System Planning"] },
+          { title: "Mapping", days: 90, skills: ["Sector Mapping", "Long-term Vision"] }
+        ]
+      }
+    }
+  }
+};
+
+/* ========== POPULATE JOB ROLES ========== */
+function populateJobRoles() {
+  const interest = document.getElementById("interest").value;
+  const level = document.getElementById("nsqfLevel").value;
+  const jobRoleSelect = document.getElementById("jobRole");
+
+  jobRoleSelect.innerHTML = '<option value="">--जॉब रोल चुनें--</option>';
+  if (interest && level && roadmapData[interest] && roadmapData[interest][level]) {
+    const roles = Object.keys(roadmapData[interest][level]);
+    roles.forEach(role => {
+      const opt = document.createElement("option");
+      opt.value = role;
+      opt.textContent = role;
+      jobRoleSelect.appendChild(opt);
+    });
+  }
+}
+
+/* ========== RENDER ROADMAP ========== */
+function renderRoadmap() {
+  const interest = document.getElementById("interest").value;
+  const level = document.getElementById("nsqfLevel").value;
+  const role = document.getElementById("jobRole").value;
+  const output = document.getElementById("roadmap-output");
+
+  if (interest && level && role && roadmapData[interest][level][role]) {
+    const data = roadmapData[interest][level][role];
+    let html = `<h3>${role}</h3>
+      <p>⏳ अवधि: ${data.duration}</p>
+      <p>💰 सैलरी: ₹${data.salary.min} - ₹${data.salary.max}</p>
+      <p>🎓 डिग्री: ${data.degree.recommended} (${data.degree.timing})</p>
+      <p>📌 नोट: ${data.degree.note}</p>
+      <h4>Phases:</h4>`;
+    data.phases.forEach(p => {
+      html += `<div class="phase-block"><strong>${p.title}</strong> (${p.days} दिन) → Skills: ${p.skills.join(", ")}</div>`;
+    });
+    output.innerHTML = html;
+  } else {
+    output.innerHTML = "<p>⚠ कृपया सभी विकल्प चुनें और फिर जॉब रोल सेलेक्ट करें।</p>";
+  }
+}
+
+/* ========== VOICE INPUT HANDLER ========== */
+function startVoice() {
+  const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+  recognition.lang = 'en-IN';
+
+  recognition.onresult = function(event) {
+    const transcript = event.results[0][0].transcript.trim();
+    document.getElementById("voiceQuery").value = transcript;
+
+    let query = transcript.toLowerCase();
+    let output = document.getElementById("roadmap-output");
+
+    // 1. Check if subject is spoken
+    for (const subject in subjectCareers) {
+      if (query.includes(subject)) {
+        let careers = subjectCareers[subject];
+        output.innerHTML = `<h3>📚 ${subject.toUpperCase()} Careers</h3>` +
+          careers.map(c => `<div class="career-list">🔹 ${c}</div>`).join("");
+        return; // subject matched → stop here
+      }
+    }
+
+    // 2. Else check if job role is spoken
+    let interest = "";
+    let level = "";
+    let roleMatch = "";
+
+    // Detect interest
+    if (query.includes("software") || query.includes("सॉफ्टवेयर")) interest = "software";
+    else if (query.includes("hardware") || query.includes("हार्डवेयर")) interest = "hardware";
+
+    // Detect NSQF level
+    const numbers = query.match(/\d+/);
+    if (numbers) level = numbers[0];
+
+    // Detect job role
+    outerLoop:
+    for (const i in roadmapData) {
+      for (const l in roadmapData[i]) {
+        for (const role in roadmapData[i][l]) {
+          if (query.includes(role.toLowerCase())) {
+            interest = i;
+            level = l;
+            roleMatch = role;
+            break outerLoop;
+          }
+        }
+      }
+    }
+
+    // Fill UI & Render
+    if (interest) document.getElementById("interest").value = interest;
+    if (level) document.getElementById("nsqfLevel").value = level;
+    populateJobRoles();
+
+    if (roleMatch) {
+      document.getElementById("jobRole").value = roleMatch;
+      renderRoadmap();
+    } else {
+      output.innerHTML = `<p>⚠ जॉब रोल या सब्जेक्ट पहचाना नहीं जा सका।</p>`;
+    }
+  };
+
+  recognition.onerror = function(event) {
+    console.log("Voice error:", event.error);
+  };
+
+  recognition.start();
+}
   </script>
 </body>
 </html>
