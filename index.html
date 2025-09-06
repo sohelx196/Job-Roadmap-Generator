@@ -6,6 +6,33 @@
   <link rel="stylesheet" href="index.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <style>
+
+/* Responsive: Adjust tagline text size on mobile */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;   /* Stack tagline and form vertically */
+    padding: 20px;
+  }
+
+  .tagline {
+    font-size: 0.9em;   /* Smaller text on mobile */
+    padding: 20px;      /* Reduce padding */
+    text-align: center;
+  }
+
+  .tagline h2 {
+    font-size: 1.1em;   /* Make heading smaller too */
+  }
+
+  .container {
+    width: 100%;
+  }
+}
+
+
+
+
+
     body {
       font-family: 'Poppins', sans-serif;
 

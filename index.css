@@ -41,5 +41,5 @@ border-radius:5px;margin-top:10px;width:max-content;
 transition: transform 0.3s ease-in-out;
     }
     .skill-list:hover{
-      transform: translateY(-2px);
+      transform: translateX(4px);
     } 
