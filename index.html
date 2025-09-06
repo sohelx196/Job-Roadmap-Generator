@@ -4,38 +4,103 @@
   <meta charset="UTF-8">
   <title>Skill Roadmap Generator</title>
   <link rel="stylesheet" href="index.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
-      text-align: center;
-      padding: 30px;
+      font-family: 'Poppins', sans-serif;
+
+      margin: 0;
+  
     }
+
+    /* Page Title */
     h1 {
-      font-size: 3em;
+      font-size: 2.5em;
       color: #0f4c81;
-      margin-bottom: 10px;
-    }
-    .info {
-      font-size: 2em;
+      text-align: center;
       margin-bottom: 30px;
-      color: #333;
     }
-    .category-buttons {
-      margin-top: 20px;
+
+    /* Flex Layout for Form + Tagline */
+    .main-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-center;
+      gap: 40px;
+      padding: 50px;
+      margin: auto;
     }
-    .btn {
-      padding: 12px 20px; 
+
+    /* Form Container */
+    .container {
+      flex: 1;
+      max-width: 600px;
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .container h2 {
+      font-size: 1.3em;
+      margin-bottom: 15px;
+      color: #0f4c81;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      text-align: left;
+    }
+
+    select, button {
+      width: 100%;
+      padding: 10px;
       font-size: 1em;
-      margin: 10px;
-      border: none;
+      border: 1px solid #ccc;
       border-radius: 6px;
-      background-color: greenyellow;
-      color: black;
-      border: 1px solid #2b8a31;
+      margin-bottom: 15px;
     }
-    .btn:hover {
-      background-color: #40d34a;
+
+    /* Output Box */
+    #roadmap-output {
+      margin-top: 20px;
+      background: #f9f9f9;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
+
+    #roadmap-output h2 {
+      color: #0f4c81;
+    }
+
+    #roadmap-output ul {
+      text-align: left;
+      margin-top: 10px;
+    }
+
+    #roadmap-output li {
+      margin: 6px 0;
+    }
+
+    /* Tagline Section */
+    .tagline {
+      flex:0.7;
+      font-size: 1.1em;
+      color: #333;
+      text-align: center;
+      background: #fff;
+      padding: 10%;
+      border-radius: 10px;
+      line-height: 1.7;
+    }
+
+    .tagline strong {
+      color: #0f4c81;
     }
   </style>
 </head>
@@ -43,21 +108,130 @@
 
   <!-- Project Title -->
   <h1>Skill Roadmap Generator</h1>
- <a href="tesing.html"><button class="btn">Check Roadmap</button></a>
-  <!-- Full Forms -->
-  <div class="info">
-    <p><strong>NSQF:</strong> National Skills Qualifications Framework</p>
-    <p><strong>NIELIT:</strong> National Institute of Electronics & Information Technology</p>
-  </div>
-   
 
-  <!-- Buttons Section -->
-  <!-- <section>
-    <div class="category-buttons">
+  <!-- Form + Tagline Side by Side -->
+  <div class="main-content">
     
-      <a href="hardware.html"><button class="btn">Hardware</button></a>
+    <!-- Tagline on Left -->
+    <div class="tagline">
+      <h2><strong>Learn Today, Lead Tomorrow (Future Ready Skills)</strong></h2>
+      <p>Equipping youth with AI, robotics, coding, and digital literacy—building the skill set needed for the jobs and challenges of the future.</p>
     </div>
-  </section> -->
 
+    <!-- Form on Right -->
+    <div class="container">
+      <h2>🔍 अपना स्किल रोडमैप चुनें</h2>
+
+      <label for="interest">इंटरेस्ट:</label>
+      <select id="interest" onchange="populateJobRoles()">
+        <option value="">--चुनें--</option>
+        <option value="software">💻 Software</option>
+        <option value="hardware">🔧 Hardware</option>
+      </select>
+
+      <label for="nsqfLevel">NSQF लेवल:</label>
+      <select id="nsqfLevel" onchange="populateJobRoles()">
+        <option value="">--चुनें--</option>
+        <option value="1">Level 1</option>
+        <option value="2">Level 2</option>
+        <option value="3">Level 3</option>
+        <option value="4">Level 4</option>
+        <option value="5">Level 5</option>
+        <option value="6">Level 6</option>
+        <option value="7">Level 7</option>
+        <option value="8">Level 8</option>
+        <option value="9">Level 9</option>
+        <option value="10">Level 10</option>
+      </select>
+
+      <label for="jobRole">जॉब रोल:</label>
+      <select id="jobRole">
+        <option value="">--पहले ऊपर दो विकल्प चुनें--</option>
+      </select>
+
+      <button onclick="renderRoadmap()">Check Roadmap</button>
+
+      <div id="roadmap-output"></div>
+    </div>
+  </div>
+
+
+  <!-- Full Forms -->
+  <div class="info" style="text-align: center;">
+    <div>
+
+      <p><strong>NSQF:</strong> National Skills Qualifications Framework</p>
+    </div>
+    <div>
+      <p><strong>NIELIT:</strong> National Institute of Electronics & Information Technology</p>
+    </div>
+  </div>
+
+  <script>
+    const roadmapData = {
+      software: {
+        1: { "Data Entry Operator": ["हिंदी/अंग्रेज़ी", "MS Word", "Excel", "PowerPoint", "Internet", "UPI"] },
+        2: { "CCC Operator": ["Digital Literacy", "Email", "Typing", "Cyber Hygiene"] },
+        3: { "Office Assistant": ["Word", "Excel", "Call Handling", "CRM Basics"] },
+        4: { "Web Dev Associate": ["HTML", "CSS", "JS", "Git"] },
+        5: { "Frontend Developer": ["React", "Responsive Design", "Hosting"] },
+        6: { "Full Stack Dev": ["MERN Stack", "API Integration", "Billing Logic"] },
+        7: { "SaaS Architect": ["Plugin Loader", "Modular UI", "Founder Governance"] },
+        8: { "AI Product Lead": ["Model Tuning", "Deployment", "Ethics"] },
+        9: { "Tech Consultant": ["Export Strategy", "Policy Mapping"] },
+        10: { "Skill Strategist": ["NSQF Framework", "System Design"] }
+      },
+      hardware: {
+        1: { "Ground Technician": ["Tool Handling", "Safety", "Cleaning"] },
+        2: { "Cable Installer": ["Wiring", "Crimping", "Testing"] },
+        3: { "IoT Assistant": ["Arduino", "Sensors", "Soldering"] },
+        4: { "Embedded Operator": ["ESP32", "Raspberry Pi", "LAN Setup"] },
+        5: { "Smart Device Installer": ["Voice Interface", "Modular Wiring"] },
+        6: { "Hardware Integrator": ["IoT + Cloud", "Diagnostics"] },
+        7: { "Product Designer": ["PCB Design", "Firmware Logic"] },
+        8: { "Hardware Architect": ["Tier Planning", "BOM Optimization"] },
+        9: { "Hardware Consultant": ["Export Prototyping", "Compliance"] },
+        10: { "Hardware Planner": ["Deployment Strategy", "Sector Mapping"] }
+      }
+    };
+
+    function populateJobRoles() {
+      const interest = document.getElementById("interest").value;
+      const level = document.getElementById("nsqfLevel").value;
+      const jobRoleSelect = document.getElementById("jobRole");
+      jobRoleSelect.innerHTML = "<option value=''>--जॉब रोल चुनें--</option>";
+
+      if (interest && level && roadmapData[interest][level]) {
+        const roles = Object.keys(roadmapData[interest][level]);
+        roles.forEach(role => {
+          const option = document.createElement("option");
+          option.value = role;
+          option.textContent = role;
+          jobRoleSelect.appendChild(option);
+        });
+      }
+    }
+
+    function renderRoadmap() {
+      const interest = document.getElementById("interest").value;
+      const level = document.getElementById("nsqfLevel").value;
+      const jobRole = document.getElementById("jobRole").value;
+      const output = document.getElementById("roadmap-output");
+
+      if (interest && level && jobRole && roadmapData[interest][level][jobRole]) {
+        const skills = roadmapData[interest][level][jobRole];
+        output.innerHTML = `
+          <h2>📌 ${jobRole} (NSQF Level ${level})</h2>
+          <p style="background-color:yellowgreen;display:inline-block;padding:5px 10px;border-radius:5px;">
+            ⏳ अनुमानित अवधि: ${level <= 3 ? "2–6 महीने" : level <= 6 ? "6–12 महीने" : "1+ साल"}
+          </p>
+          <h3>🧰 स्किल सेट (Skill Set) :</h3>
+          <ul>${skills.map(skill => `<li class="skill-list">${skill}</li>`).join("")}</ul>
+        `;
+      } else {
+        output.innerHTML = "<p>⚠ कृपया सभी विकल्प सही तरीके से चुनें।</p>";
+      }
+    }
+  </script>
 </body>
 </html>
