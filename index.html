@@ -15,18 +15,17 @@
 
     @media (max-width: 768px) {
   .main-content {
-    flex-direction: column;   /* Stack tagline and form vertically */
-    padding: 20px;
+    flex-direction: column;  
   }
 
   .tagline {
-    font-size: 0.9em;   /* Smaller text on mobile */
-    padding: 20px;      /* Reduce padding */
+    font-size: 0.9em;   
+    padding: 20px;     
     text-align: center;
   }
 
   .tagline h2 {
-    font-size: 1.1em;   /* Make heading smaller too */
+    font-size: 1.1em;   
   }
 
   .container {
@@ -156,7 +155,7 @@
 
 
   <script>
-/* ========== SUBJECT TO CAREER MAPPING ========== */
+/* SUBJECT se CAREER MAPPING  yaha se start */
 const subjectCareers = {
   math: [
     "Data Scientist",
@@ -279,7 +278,7 @@ const subjectCareers = {
       }
     }
 
-/* ========== ROADMAP DATA (same as your original) ========== */
+/* ROADMAP DATA yaha se fetch ho rha hai */
 const roadmapData = {
   software: {
     1: {
@@ -508,25 +507,25 @@ const roadmapData = {
   }
 };
 
-/* ========== POPULATE JOB ROLES ========== */
-function populateJobRoles() {
-  const interest = document.getElementById("interest").value;
-  const level = document.getElementById("nsqfLevel").value;
-  const jobRoleSelect = document.getElementById("jobRole");
 
-  jobRoleSelect.innerHTML = '<option value="">--जॉब रोल चुनें--</option>';
+function populateJobRoles()    {
+     const interest = document.getElementById("interest").value;
+   const level = document.getElementById("nsqfLevel").value;
+     const jobRoleSelect = document.getElementById("jobRole");
+
+   jobRoleSelect.innerHTML = '<option value="">--जॉब रोल चुनें--</option>';
   if (interest && level && roadmapData[interest] && roadmapData[interest][level]) {
-    const roles = Object.keys(roadmapData[interest][level]);
+      const roles = Object.keys(roadmapData[interest][level]);
     roles.forEach(role => {
       const opt = document.createElement("option");
-      opt.value = role;
-      opt.textContent = role;
+       opt.value = role;
+       opt.textContent = role;
       jobRoleSelect.appendChild(opt);
     });
   }
 }
 
-/* ========== RENDER ROADMAP ========== */
+/* roadmap render ho rhe hai */
 function renderRoadmap() {
   const interest = document.getElementById("interest").value;
   const level = document.getElementById("nsqfLevel").value;
@@ -550,7 +549,7 @@ function renderRoadmap() {
   }
 }
 
-/* ========== VOICE INPUT HANDLER ========== */
+/* Voice Input Handler startss*/
 function startVoice() {
   const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
   recognition.lang = 'en-IN';
@@ -600,7 +599,7 @@ function startVoice() {
       }
     }
 
-    // Fill UI & Render
+    // Fill UI & Render...
     if (interest) document.getElementById("interest").value = interest;
     if (level) document.getElementById("nsqfLevel").value = level;
     populateJobRoles();
