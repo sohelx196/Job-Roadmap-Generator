@@ -1,0 +1,21 @@
+.hero {width: 100%; min-height: 100vh; display: flex; align-items: center;  padding-left: 40px; 
+box-sizing: border-box;
+color: white;
+font-size: 30px;
+background: url('demo.jpeg') center / cover  no-repeat;
+
+}
+
+.hero-content { max-width: 700px; }
+
+
+.hero h1 {
+font-size: 50px;
+font-weight: 700; margin: 0 0 10px 0;
+}
+
+.hero .subtitle {
+font-size: 24px;
+display: inline-block; margin: 0;
+padding-bottom: 6px; border-bottom: 3px solid #38bdf8; 
+}

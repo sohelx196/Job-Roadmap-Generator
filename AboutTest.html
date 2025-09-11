@@ -1,0 +1,102 @@
+<html>
+<head>
+  <title>Portfolio</title>
+
+  <style>
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, sans-serif; color: #222; padding: 32px; }
+
+
+.about {
+  display: flex;
+  gap: 40px;
+  max-width: 1100px;
+  margin-top: 30px;
+}
+
+.left {
+  width: 500px;
+  height: 400px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #eee;
+}
+.left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.right h2 {
+  color: #123a61;
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+.lead {
+  font-style: italic;
+  color: #555;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.details {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+.item {
+  width: 45%;          /* two items per row */
+  margin-bottom: 10px;
+}
+.item strong {
+  color: #123a61;
+  font-weight: bold;
+  display: inline-block;
+  width: 120px; /* aligns labels */
+}
+.item span, .item a { color: #2b3f47; text-decoration: none; }
+.item a { color: #1e90ff; }
+
+  </style>
+
+</head>
+
+<body>
+ <h1 style="color:#123a61; font-size:36px; margin-bottom:18px;">About</h1>
+
+ <section class="about">
+  <div class="left">
+    <img src="alex.jpeg" alt="Sohel's profile picture">
+  </div>
+
+  <div class="right">
+     <h2>Frontend Developer</h2>
+
+<p class="lead">
+  Hey there I am <strong>Sohel Sheikh</strong>, a Web Developer. Passionate about Web Designing & learning Full Stack Web Development.
+</p>
+
+<p><em>A father often serves as a mentor, offering wisdom and direction in life. Inspired by my father.</em></p>
+
+
+
+<div class="details">
+  <div class="item"><strong>Birthday:</strong><span>29 May 2004</span></div>
+  <div class="item"><strong>Age:</strong><span>21</span></div>
+  <div class="item"><strong>Phone:</strong><span>+91 9131****88</span></div>
+  <div class="item"><strong>Degree:</strong><span>Data Science (3rd Year)</span></div>
+  <div class="item"><strong>City:</strong><span>Khandwa</span></div>
+  <div class="item"><strong>Email:</strong><a href="mailto:sohel.devlover196@gmail.com">sohel.devlover196@gmail.com</a></div>
+</div>
+
+
+  </div>
+</section>
+
+
+
+</body>
+
+</html>

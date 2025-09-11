@@ -1,0 +1,187 @@
+<html>
+<head>
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="about.css">
+  <link rel="stylesheet" href="hero.css">
+<style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  display: flex; 
+   height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #0f172a; 
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  position: fixed; 
+  height: 100%;
+  justify-content: space-between; 
+}
+.main { margin-left: 250px; }
+.sidebar img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.sidebar-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sidebar h2 {
+  margin-bottom: 20px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+.social-icons a {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background: #1e293b;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 35px;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+.social-icons a:hover {
+  background: #334155;
+}
+
+.sidebar nav a {
+  display: block;
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+  margin: 5px 0;
+  text-align: center;
+  border-radius: 6px;
+}
+.sidebar nav a:hover {
+  background: #1e293b;
+}
+.sidebar-footer {
+ text-align: center; font-size: 14px;color: #94a3b8;
+}
+
+
+.sidebar-footer a { color: #38bdf8; text-decoration: none;
+}
+
+.main { margin-left: 250px;  padding: 40px; flex: 1; height: 100vh; overflow-y: auto;  background: white; color: black;
+}
+.section { margin-bottom: 80px;
+}
+
+.section h1 { font-size: 32px; margin-bottom: 20px;
+}
+
+</style>
+</head>
+<body>
+    <div class="sidebar">
+    <div class="sidebar-top">
+      <img src="" alt="Profile">
+      <h2>Sohel Sheikh</h2>
+
+   
+      <div class="social-icons">
+        <a href="#">T</a>
+        <a href="#">I</a>
+        <a href="#">L</a>
+      </div>
+
+  
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#resume">Resume</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+
+    
+    <div class="sidebar-footer">
+      <p>© Copyright <b>One9Six</b></p>
+      <p>Designed by <a href="#">Sohel Sheikh</a></p>
+    </div>
+  </div>
+
+
+
+  <div class="main">
+    
+    <section id="home" class="section">
+      <h1>Hello Creative Minds!</h1>
+      <p>I'm a Web Designer</p>
+    </section>
+
+    <section id="about" class="section">
+ <h1 style="color:#123a61; font-size:36px; margin-bottom:18px;">About</h1>
+
+  <section class="about">
+    <!-- LEFT -->
+    <div class="left">
+      <img src="alex.jpeg" alt="Sohel's profile picture">
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right">
+      <h2>Frontend Developer</h2>
+
+      <p class="lead">
+        Hey there I am <strong>Sohel Sheikh</strong>, a Web Developer. Passionate about Web Designing & learning Full Stack Web Development.
+      </p>
+
+      <p><em>A father often serves as a mentor, offering wisdom and direction in life. Inspired by my father.</em></p>
+
+      <div class="details">
+        <div class="item"><strong>Birthday:</strong><span>29 May 2004</span></div>
+        <div class="item"><strong>Age:</strong><span>21</span></div>
+        <div class="item"><strong>Phone:</strong><span>+91 9131****88</span></div>
+        <div class="item"><strong>Degree:</strong><span>Data Science (3rd Year)</span></div>
+        <div class="item"><strong>City:</strong><span>Khandwa</span></div>
+        <div class="item"><strong>Email:</strong><a href="mailto:sohel.devlover196@gmail.com">sohel.devlover196@gmail.com</a></div>
+      </div>
+    </div>
+  </section>
+    </section>
+
+    <section id="resume" class="section">
+      <h1>Resume</h1>
+      <p>My Resume details go here.</p>
+    </section>
+
+    <section id="projects" class="section">
+      <h1>Projects</h1>
+      <p>Some of my projects.</p>
+    </section>
+
+  <section id="contact" class="section">
+      <h1>Contact</h1>
+      <p>Contact me here.</p>
+    </section>
+  </div>
+
+</body>
+
+</html>
