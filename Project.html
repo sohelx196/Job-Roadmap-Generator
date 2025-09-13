@@ -1,0 +1,78 @@
+
+<html>
+<head>
+    <title>Projects</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Arial, sans-serif; background:#f4f8fb; color:#0f172a; padding: 28px; }
+        .container { max-width:1200px; margin: 0 auto; padding: 6px 16px; }
+
+        .projects-title {
+  font-size: 42px;                /* large headline like screenshot */
+  font-weight: 700;
+  color: #123a61;
+  margin-bottom: 8px;
+}
+.title-underline {
+  width: 60px;
+  height: 6px;
+  background: #0b6a93;
+  margin: 12px 0 22px 0;
+  border-radius: 3px;
+}
+
+
+.projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;   /* center the links horizontally */
+  gap: 46px;           /* row-gap, column-gap (adjust for spacing) */
+  margin-top: 40px;
+  align-items: center;
+}
+
+
+.project-link {
+  display: inline-block;
+  text-decoration: none;
+  color: #0ea5e9;         /* bright blue */
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  padding: 12px 8px;      /* clickable area */
+  font-size: 18px;
+  border: 2px solid gray;
+  border-radius: 5px;
+  transition: all 1s;
+}
+.project-link:hover {
+    background-color: rgb(243, 235, 195);
+    border: 2px dashed red;
+}
+
+
+    </style>
+</head>
+<body>
+    
+
+<section class="projects-section">
+  <div class="container">
+      <h2 class="projects-title">Just started creating new things..</h2>
+      <div class="title-underline"></div>
+
+      <div class="projects-grid">
+           <a class="project-link" href="#" target="_blank">MEGAVIZ IT SOLUTION</a>
+           <a class="project-link" href="#" target="_blank">AAKAR GRAPHICS</a>
+           <a class="project-link" href="#" target="_blank">VOICE ATTENDANCE</a>
+
+
+           <a class="project-link" href="#" target="_blank">APPOINTMENT</a>
+           <a class="project-link" href="#" target="_blank">FIRST PORTFOLIO</a>
+      </div>
+  </div>
+</section>
+
+
+</body>
+</html>
