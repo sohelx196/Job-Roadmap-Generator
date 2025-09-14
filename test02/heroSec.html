@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Typewriter Effect</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align:start; margin-top:100px; }
+    #typing-text {
+      font-size: 24px;
+      color: #123a61;
+      display: inline-block;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Hello Creative Minds!</h1>
+ <span>I am</span> <p id="typing-text"> </p> </span>
+
+  <script>
+    let texts = ["Sohel Sheikh", " Web Developer", "React Developer", "Full Stack Learner"];
+    let index = 0;
+    let charIndex = 0;
+    let textEl = document.getElementById("typing-text");
+
+    function typeEffect() {
+      if (charIndex < texts[index].length) {
+        textEl.innerText += texts[index].charAt(charIndex);
+        charIndex++;
+        setTimeout(typeEffect, 100); // typing speed
+      } else {
+        setTimeout(eraseEffect, 1500); // wait before deleting
+      }
+    }
+
+    function eraseEffect() {
+      if (charIndex > 0) {
+        textEl.innerText = texts[index].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(eraseEffect, 50); // deleting speed
+      } else {
+        index = (index + 1) % texts.length;
+        setTimeout(typeEffect, 500); // start typing next
+      }
+    }
+
+    typeEffect();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test 8 - Pricing Boxes</title>
+  <style>
+    body { margin:0; height:100vh; display:flex; justify-content:center; align-items:center; font-family:Arial; background:#f9f9f9; }
+    .pricing {
+      display:flex; gap:20px;
+    }
+    .box {
+      flex:1; background:white; padding:30px; border-radius:10px; text-align:center;border:2px solid black;
+      box-shadow:0 4px 8px rgba(0,0,0,0.1);
+    }
+    .box h2 { margin:0; font-size:24px; }
+    .box p { margin:10px 0; }
+    .box button { margin-top:15px; padding:8px 16px; border:none; background:#38bdf8; color:white; border-radius:5px; cursor:pointer; }
+  </style>
+</head>
+<body>
+  <div class="pricing">
+    <div class="box"><h2>Basic</h2><p>$10</p><button>Choose</button></div>
+    <div class="box"><h2>Pro</h2><p>$20</p><button>Choose</button></div>
+    <div class="box"><h2>Premium</h2><p>$30</p><button>Choose</button></div>
+  </div>
+</body>
+</html>
